@@ -5,6 +5,7 @@ function Thermostat() {
 	this._minTemperature = 10;
 	this._maxTemperature = 25;
 	this._powerSavingOn = true;
+	this._energyUsage = 'medium-usage'
 }
 
 Thermostat.prototype.reportTemperature = function() {
@@ -16,6 +17,7 @@ Thermostat.prototype.up = function() {
 		throw new Error('Cannot raise temperature above ' + this._maxTemperature)
 	}
 	this._temperature += 1;
+	this.setEnergyUsage()
 }
 
 Thermostat.prototype.down = function() {
@@ -23,6 +25,7 @@ Thermostat.prototype.down = function() {
 		throw new Error('Cannot lower temperature below 10')
 	}
 	this._temperature -= 1;
+	this.setEnergyUsage()
 }
 
 Thermostat.prototype.reset = function() {
@@ -41,4 +44,14 @@ Thermostat.prototype.switchPowerMode = function () {
 		this._powerSavingOn = true
 		this._maxTemperature = 25;
 	}
+}
+
+Thermostat.prototype.setEnergyUsage = function() {
+	if(this._temperature < 18) { this._energyUsage = "low-usage"; }
+	else if(this._temperature < 25) { this._energyUsage = "medium-usage"; }
+	else { this._energyUsage = "high-usage"; }
+};
+
+Thermostat.prototype.reportEnergyUsage = function () {
+	return this._energyUsage;
 }

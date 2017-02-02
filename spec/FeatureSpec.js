@@ -69,4 +69,26 @@ describe('feature', function() {
 			expect(thermostat.reportTemperature()).toEqual(32);
 		});
 	});
+
+	describe('the thermostat can report on energy usage which', function() {
+		it('can be low', function() {
+			for (var i = 0; i < 10; i++) {
+				thermostat.down()
+			}	
+			console.log(thermostat.reportTemperature())
+			expect(thermostat.reportEnergyUsage()).toEqual('low-usage');
+		});
+
+		it('can be medium', function() {
+			expect(thermostat.reportEnergyUsage()).toEqual('medium-usage');
+		});
+
+		it('can be high', function() {
+			thermostat.switchPowerMode();
+			for (var i = 0; i < 12; i++) {
+				thermostat.up()
+			}	
+			expect(thermostat.reportEnergyUsage()).toEqual('high-usage');
+		});
+	});
 });

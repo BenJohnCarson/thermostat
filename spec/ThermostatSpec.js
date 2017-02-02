@@ -50,4 +50,8 @@ describe('Thermostat', function() {
 		}
 		expect(function() {thermostat.up()}).toThrowError('Cannot raise temperature above 25')
 	});
+
+	it('knows it\'s level of enegry usage', function() {
+		expect(thermostat._energyUsage).toEqual('medium-usage')
+	});
 });
