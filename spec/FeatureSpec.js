@@ -14,13 +14,21 @@ describe('feature', function() {
 		});
 
 		it('which can be increased', function() {
-			thermostat.up(2)
-			expect(thermostat.reportTemperature()).toEqual(22);
+			thermostat.up()
+			expect(thermostat.reportTemperature()).toEqual(21);
 		});
 
 		it('which can be decreased', function() {
-			thermostat.down(2)
-			expect(thermostat.reportTemperature()).toEqual(18);
+			thermostat.down()
+			expect(thermostat.reportTemperature()).toEqual(19);
+		});
+
+		it('which cannot be lowered past 10', function() {
+			for (var i = 0; i < 10; i++) {
+				thermostat.down()
+			}	
+			expect(function() {thermostat.down()}).toThrowError('Cannot lower temperature below 10')		
+			expect(thermostat.reportTemperature()).toEqual(10);
 		});
 	});
 });

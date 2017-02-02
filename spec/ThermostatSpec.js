@@ -13,12 +13,19 @@ describe('Thermostat', function() {
 	});
 
 	it('can increase the temperature', function() {
-		thermostat.up(2);
-		expect(thermostat._temperature).toEqual(22);
+		thermostat.up();
+		expect(thermostat._temperature).toEqual(21);
 	});
 
 	it('can decrease the temperature', function() {
-		thermostat.down(2)
-		expect(thermostat._temperature).toEqual(18);
+		thermostat.down()
+		expect(thermostat._temperature).toEqual(19);
+	});
+
+	it('cannot decrease the temperate below 10', function() {
+		for (var i = 0; i < 10; i++) {
+			thermostat.down()
+		}
+		expect(function() {thermostat.down()}).toThrowError('Cannot lower temperature below 10')
 	});
 });
