@@ -17,5 +17,10 @@ describe('feature', function() {
 			thermostat.up(2)
 			expect(thermostat.reportTemperature()).toEqual(22);
 		});
+
+		it('which can be decreased', function() {
+			thermostat.down(2)
+			expect(thermostat.reportTemperature()).toEqual(18);
+		});
 	});
 });
