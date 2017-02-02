@@ -30,6 +30,12 @@ describe('feature', function() {
 			expect(function() {thermostat.down()}).toThrowError('Cannot lower temperature below 10')		
 			expect(thermostat.reportTemperature()).toEqual(10);
 		});
+
+		it('which can be reset to 20', function() {
+			thermostat.up();
+			thermostat.reset();
+			expect(thermostat.reportTemperature()).toEqual(20);
+		});
 	});
 
 	describe('the thermostat has an power saving mode', function() {

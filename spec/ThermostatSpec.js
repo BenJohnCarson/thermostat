@@ -22,6 +22,12 @@ describe('Thermostat', function() {
 		expect(thermostat._temperature).toEqual(19);
 	});
 
+	it('can reset the temperature', function() {
+		thermostat.down();
+		thermostat.reset();
+		expect(thermostat._temperature).toEqual(20);
+	});
+
 	it('raises an error when lowered below minimum temperature', function() {
 		for (var i = 0; i < 10; i++) {
 			thermostat.down()

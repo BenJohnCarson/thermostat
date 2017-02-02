@@ -1,8 +1,7 @@
 'use strict';
 
 function Thermostat() {
-	var DEFAULT_TEMPERATURE = 20;
-	this._temperature = DEFAULT_TEMPERATURE;
+	this._temperature = 20;
 	this._minTemperature = 10;
 	this._maxTemperature = 25;
 	this._powerSavingOn = true;
@@ -24,6 +23,10 @@ Thermostat.prototype.down = function() {
 		throw new Error('Cannot lower temperature below 10')
 	}
 	this._temperature -= 1;
+}
+
+Thermostat.prototype.reset = function() {
+	this._temperature = 20;
 }
 
 Thermostat.prototype.isPowerSaving = function() {
