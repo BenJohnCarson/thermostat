@@ -22,10 +22,26 @@ describe('Thermostat', function() {
 		expect(thermostat._temperature).toEqual(19);
 	});
 
-	it('cannot decrease the temperate below 10', function() {
+	it('raises an error when lowered below minimum temperature', function() {
 		for (var i = 0; i < 10; i++) {
 			thermostat.down()
 		}
 		expect(function() {thermostat.down()}).toThrowError('Cannot lower temperature below 10')
+	});
+
+	it('is switched to power saving by default', function() {
+		expect(thermostat._powerSavingOn).toBe(true)
+	});
+
+	it('can switch power saving mode off', function() {
+		thermostat.switchPowerMode()
+		expect(thermostat._powerSavingOn).toBe(false)
+	});
+
+	it('raises an error when raised above maximum temperature', function() {
+		for (var i = 0; i < 5; i++) {
+			thermostat.up()
+		}
+		expect(function() {thermostat.up()}).toThrowError('Cannot raise temperature above 25')
 	});
 });
