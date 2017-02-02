@@ -12,5 +12,10 @@ describe('feature', function() {
 		it('which defaults to 20', function() {
 			expect(thermostat.reportTemperature()).toEqual(20);
 		});
+
+		it('which can be increased', function() {
+			thermostat.up(2)
+			expect(thermostat.reportTemperature()).toEqual(22);
+		});
 	});
 });
