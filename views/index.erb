@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Thermostat</title>
+	<script src="jquery-3.1.1.js"></script>
+	<script src="Thermostat.js"></script>
+	<script src="interface.js"></script>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+	
+	<h1 align="center">Thermostat</h1>
+	
+
+	<h3>Outside temperature: <span class="outsidetemp"></span></h3>
+	<form class="select-city">
+    	<input class="current-city" type="text" placeholder="Enter a city"></input>
+    	<input type="submit"></input>
+  	</form>
+  	
+  	<p>The current temperature is <span class="currenttemp">CURRENT TEMP</span>
+	<p> Power saving: </p><div class="powersavelight"></div>
+	<p> Energy usage: </p><div id="energyusagelight"></div>
+	
+	<div class="controls">
+	 	<button class = "tempup">TEMPERATURE UP</button>
+	 	<button class = "tempdown">TEMPERATURE DOWN </button>
+	 	<button class = "reset">RESET</button>
+	 	<div class="powermode">
+        	<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+        	<label class="onoffswitch-label" for="myonoffswitch">
+            	<span class="onoffswitch-inner"></span>
+            	<span class="onoffswitch-switch"></span>
+        	</label>
+    	</div>
+	</div>
+
+
+</body>
+</html>
