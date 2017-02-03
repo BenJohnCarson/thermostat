@@ -1,7 +1,7 @@
 
 
 $(document).ready(function() {
-	var localHost = "//ruby-learning-benjcarson.c9users.io/";
+	var localHost = "http://localhost:4567";
 	getFromServer();
 	var thermostat = new Thermostat();
 	updateTemp();
@@ -40,7 +40,6 @@ $(document).ready(function() {
 
 	function updateTemp() {
 	$('.currenttemp').text(thermostat._temperature);
-	console.log(thermostat.reportEnergyUsage());
 	$('#energyusagelight').attr('class', thermostat.reportEnergyUsage());
 	postToServer();
 	}
@@ -51,8 +50,7 @@ $(document).ready(function() {
 	
 	function getFromServer() {
 		$.get(localHost + "/temperature", function(response) {
-			console.log(response);
-			console.log(response.temperature);
+			console.log(response.temperature);						
 		});
 	}
 });

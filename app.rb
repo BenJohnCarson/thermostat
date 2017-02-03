@@ -8,16 +8,16 @@ class Thermostat < Sinatra::Base
   
   get '/temperature' do
     headers 'Access-Control-Allow-Origin' => '*'
+    p session[:temperature]
     temperature = session[:temperature] || 20
     
     content_type :json
     { temperature: temperature }.to_json
   end
 
-   post '/temperature' do
+  post '/temperature' do
     headers 'Access-Control-Allow-Origin' => '*'
     session[:temperature] = params[:temperature]
-    puts session[:temperature]
     200
   end
 
