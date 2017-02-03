@@ -93,6 +93,7 @@ DEPENDENCIES
   byebug
   capybara
   coveralls
+  json
   rake
   rspec
   rspec-sinatra
@@ -101,7 +102,7 @@ DEPENDENCIES
   sinatra
 
 RUBY VERSION
-   ruby 2.2.3p173
+   ruby 2.3.3p222
 
 BUNDLED WITH
-   1.14.2
+   1.14.3

@@ -1,31 +1,32 @@
-$(document).ready(function() {
-	var thermostat = new Thermostat();
-	updateTemp()
 
-	  		var response = $.get("http://localhost:4567/")
-  		console.log(response.responseText)
+
+$(document).ready(function() {
+	var localHost = "//ruby-learning-benjcarson.c9users.io/";
+	getFromServer();
+	var thermostat = new Thermostat();
+	updateTemp();
 
  	$('.select-city').submit(function(event) {
   		event.preventDefault();
   		var city = $('.current-city').val();
   		$.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=28da720ac77959beb32c9a1a92ebf7d7&units=metric', function(data) {
     		$('.outsidetemp').text(data.main.temp);
-  		})
-	})
+  		});
+	});
 
 	$('.tempup').click(function () {
 		thermostat.up();
-		updateTemp()
+		updateTemp();
 	});
 
 	$('.tempdown').click(function () {
 		thermostat.down();
-		updateTemp()
+		updateTemp();
 	});
 
 	$('.reset').click(function () {
 		thermostat.reset();
-		updateTemp()
+		updateTemp();
 	});
 
 	$('.onoffswitch-label').click(function () {
@@ -35,12 +36,24 @@ $(document).ready(function() {
 		} else {
 			$('.powersavelight').css("background", "grey")
 		}			
-	})
+	});
 
 	function updateTemp() {
 	$('.currenttemp').text(thermostat._temperature);
-	console.log(thermostat.reportEnergyUsage())
+	console.log(thermostat.reportEnergyUsage());
 	$('#energyusagelight').attr('class', thermostat.reportEnergyUsage());
+	postToServer();
+	}
+	
+	function postToServer() {
+		$.post(localHost + "/temperature", {'temperature': thermostat.reportTemperature()})
+	}
+	
+	function getFromServer() {
+		$.get(localHost + "/temperature", function(response) {
+			console.log(response);
+			console.log(response.temperature);
+		});
 	}
 });
 

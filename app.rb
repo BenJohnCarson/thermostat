@@ -1,13 +1,24 @@
 require 'sinatra/base'
+require 'json'
 
 class Thermostat < Sinatra::Base
-  get '/' do
+  
+  enable :sessions
+  set :session_secret, 'super secret'
+  
+  get '/temperature' do
     headers 'Access-Control-Allow-Origin' => '*'
-    'Hello Thermostat!'
+    temperature = session[:temperature] || 20
+    
+    content_type :json
+    { temperature: temperature }.to_json
   end
 
    post '/temperature' do
-    
+    headers 'Access-Control-Allow-Origin' => '*'
+    session[:temperature] = params[:temperature]
+    puts session[:temperature]
+    200
   end
 
 
