@@ -2,6 +2,9 @@ $(document).ready(function() {
 	var thermostat = new Thermostat();
 	updateTemp()
 
+	  		var response = $.get("http://localhost:4567/")
+  		console.log(response.responseText)
+
  	$('.select-city').submit(function(event) {
   		event.preventDefault();
   		var city = $('.current-city').val();
@@ -9,7 +12,6 @@ $(document).ready(function() {
     		$('.outsidetemp').text(data.main.temp);
   		})
 	})
-
 
 	$('.tempup').click(function () {
 		thermostat.up();
