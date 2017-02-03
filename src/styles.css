@@ -1,3 +1,16 @@
+    .powersavelight{
+        background: green;
+        width: 20px;
+        height: 20px;
+        border-radius: 100px;
+    }
+
+    #energyusagelight{
+        width: 20px;
+        height: 20px;
+        border-radius: 100px;
+    }
+
     .powermode {
         position: relative; width: 90px;
         -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
@@ -42,4 +55,16 @@
     }
     .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
         right: 0px;
+    }
+
+    .low-usage {
+      background: green;
+    }
+
+    .medium-usage {
+      background: orange;
+    }
+
+    .high-usage {
+      background: red;
     }
